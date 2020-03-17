@@ -331,13 +331,13 @@ public class Graph {
 				}
 			}else if (temps2>temps1){
 				if (chemin.size()>1){ //Recuperation du dernier arc du chemin
-					arcVoulu=chemin.get(-1);
+					arcVoulu=chemin.get(chemin.size()-1);
 				}else{
 					arcVoulu=chemin.get(0);
 				}
 				temps1 = temps1 + arcVoulu.getTemps(); // Mise a jour du temps entre l'utilisateur 1 et le noeud parcouru
 				chemin.remove(arcVoulu);
-				int indiceAutreEx =arcVoulu.autreExtremite(noeud1.getIndice) // Recuperation de l'autre extremite de l'arc
+				int indiceAutreEx =arcVoulu.autreExtremite(noeud1.getIndice()); // Recuperation de l'autre extremite de l'arc
 				for (Node unNoeud : listeNodes){
 					if(indiceAutreEx==unNoeud.getIndice()){
 						noeud1=unNoeud; // Mise a jour du noeud parcour par l'utilisateur 1
