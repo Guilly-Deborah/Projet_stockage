@@ -3,7 +3,7 @@
 public class Main {
 	
 	public static void main(String []args ){
-		// Création du graphe initial
+		// CrÃ©ation du graphe initial
 		Graph graph = new Graph();
 		// Ajout des noeuds
 		graph.ajoutNode(1,40);
@@ -28,18 +28,9 @@ public class Main {
 		graph.relierUserNode(2,2,2);
 		// Placement des datas
 		graph.placerData();
-		// Dijkstra
-		graph.dijkstra(3,2);
 		//AFFICHAGE
 		//graph.affichage();
 
 	}
 }
 
-/*
-Indexage automatique
-Commentaire : Main, Graph, Arc
-Graph : Finir placementDataUsers
-revoir testfin
-
- */
