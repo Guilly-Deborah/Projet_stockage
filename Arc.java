@@ -37,4 +37,12 @@ public class Arc {
         //node2.affichage();
         System.out.println(" de temps : ".concat(Integer.toString(this.temps)));
     }
+    public int autreExtremite(int unIdNode){ // Recherche l'indice de l'autre extremite d'un arc entre deux nodes
+        if (node1.getIndice()==unIdNode){
+            return node2.getIndice();
+        }else if (node2.getIndice()==unIdNode){
+            return node1.getIndice();
+        }
+        return 0;
+    }
 }

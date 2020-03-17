@@ -25,16 +25,7 @@ public class User {
         return this.idUser;
     }
     public Node getNodeVoisin(){return this.NodeVoisin;}
-    // Affichage
-	/*public void affichage(){
-		System.out.println("	Indice ".concat(Integer.toString(this.idUser)));
-		// Ex : Indice 2
-		System.out.println("		Data voulues : ");
-		for (Data uneData : idDataVoulu){
-			System.out.println("		DATA Id ".concat(Integer.toString(uneData.getIndice())));
-			//Ex : DATA Id4
-		}
-	}*/
+    
 	public void ajoutData(Data uneData){idDataVoulu.add(uneData); } // Ajout une donnee a la liste des data voulues + utiliser dans graph.RattacherDataUser
 
 	public void RatacheUser(Node unNode){

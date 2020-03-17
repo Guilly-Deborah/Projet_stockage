@@ -33,7 +33,7 @@ public class Node {
     public int getIndice(){
         return this.idNode;
     }
-    public int getCapacite(){ return this.capacite; }
+    //public int getCapacite(){ return this.capacite; }
     public ArrayList<Node> getVoisins(){return this.Voisins;}
 
 	public boolean verificationAjoutData(Data uneData){ // Permet d'ajouter une data dans le noeud
@@ -90,24 +90,3 @@ public class Node {
 	}
 
 }
-
-// Affichage
-	/*public void affichage(){
-		System.out.println("	Indice ".concat(Integer.toString(this.idNode)).concat(" Capacite restante ").concat(Integer.toString(this.capacite)));
-		// Ex : Indice 2 Capcite restante 2
-		for (Data uneData : idData){
-			System.out.println("		DATA Id ".concat(Integer.toString(uneData.getIndice())).concat(" de taille ").concat(Integer.toString(uneData.getTaille())));
-			// Ex : DATA Id 3 de taille 10
-		}
-		for (User unUser : idUser){
-			System.out.println("		USER Id ".concat(Integer.toString(unUser.getIndice())));
-			// Ex : USER Id 4
-			/*for (Data uneData : unUser.getIdDataVoulu()){
-				System.out.println("			DATA Id ".concat(Integer.toString(uneData.getIndice())));
-			}
-		}
-		for (Node unVoisin : idVoisins){
-			System.out.println("		NODE Id ".concat(Integer.toString(unVoisin.getIndice())));
-			// Ex : NODE Id 1
-		}
-	}*/

@@ -40,8 +40,3 @@ public class Data {
 	}
 }
 
-//Afichage
-	/*public void affichage(){
-		System.out.println("	Indice ".concat(Integer.toString(this.idData)).concat(" Taille ").concat(Integer.toString(this.taille)));
-		// Ex : Indice 4 Taille 25
-	}*/

@@ -3,11 +3,11 @@
 public class Main {
 	
 	public static void main(String []args ){
-		// CrÃ©ation du graphe initial
+		// Création du graphe initial
 		Graph graph = new Graph();
 		// Ajout des noeuds
 		graph.ajoutNode(1,40);
-		graph.ajoutNode(2,40);
+		graph.ajoutNode(2,70);
 		graph.ajoutNode(3,50);
 		// Ajout des utilisateurs
 		graph.ajoutUser(1);
@@ -20,6 +20,7 @@ public class Main {
 		graph.ratacheDataUser(1, 0);
 		graph.ratacheDataUser(1, 1);
 		graph.ratacheDataUser(1, 2);
+		graph.ratacheDataUser(2, 1);
 		// Relier les noeuds entre eux
 		graph.relierVoisins(1,2,1);
 		graph.relierVoisins(1,3,1);
@@ -27,10 +28,18 @@ public class Main {
 		graph.relierUserNode(1,3,2);
 		graph.relierUserNode(2,2,2);
 		// Placement des datas
-		graph.placerData();
+		//graph.placerData();
+		// Placement d'une date voulu par deux utilisateurs
+		graph.placementDataUsers(1,2,1);
 		//AFFICHAGE
 		//graph.affichage();
 
 	}
 }
 
+/*
+Indexage automatique
+Commentaire : Main, Graph, Arc
+Graph : 
+
+ */
