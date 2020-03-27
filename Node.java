@@ -33,7 +33,6 @@ public class Node {
     public int getIndice(){
         return this.idNode;
     }
-    //public int getCapacite(){ return this.capacite; }
     public ArrayList<Node> getVoisins(){return this.Voisins;}
 
 	public boolean verificationAjoutData(Data uneData){ // Permet d'ajouter une data dans le noeud

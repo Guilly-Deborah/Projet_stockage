@@ -33,14 +33,14 @@ public class Graph {
 	}
 	public void ajoutNode(int unId, int uneCapacite) {
 		listeNodes.add(new Node(this.listeNodes, unId, uneCapacite));
-		System.out.println("NODE ".concat(Integer.toString(unId)).concat(" de capacit√© ").concat(Integer.toString(uneCapacite)));
+		System.out.println("NODE ".concat(Integer.toString(unId)).concat(" de capacitÈ ").concat(Integer.toString(uneCapacite)));
 	}
 	// Relier un User et une Data
 	public boolean rechercheUserVerife(int unIdData) {
 		boolean existe = false;
 		//Recherche user interesse par la data
 		for (User unUser : listeUsers) {
-			for (Data donne : unUser.getIdDataVoulu()) {
+			for (Data donne : unUser.getDataVoulu()) {
 				if (donne.getIndice() == unIdData) {
 					existe = true;
 				}
@@ -50,7 +50,7 @@ public class Graph {
 	}
 
 	public void ratacheDataUser(int unIdUser, int unIdData) { //Relier une data a un utilisateur
-		//if (rechercheUserVerife(unIdData) == false) { // Si la data n'est pas d√©ja reliee
+		//if (rechercheUserVerife(unIdData) == false) { // Si la data n'est pas dÈja reliee
 			//Recherche de la data
 			for (Data uneDonnee : listeData) {
 				if (uneDonnee.getIndice() == unIdData) {
@@ -66,9 +66,9 @@ public class Graph {
 			userVoulu.ajoutData(dataVoulu); // Fonction dans User
 			// Affichage
 			System.out.print("l'USER ".concat(Integer.toString(userVoulu.getIndice())));
-			System.out.println(" a acc√®s √† la DATA ".concat(Integer.toString(dataVoulu.getIndice())));
+			System.out.println(" a accËs ‡ la DATA ".concat(Integer.toString(dataVoulu.getIndice())));
 		//} else {
-		//	System.out.println("Data d√©j√† reli√©e");
+		//	System.out.println("Data dÈj‡ reliÈe");
 		//}
 
 	}
@@ -100,7 +100,7 @@ public class Graph {
 			arc.affichageNN(); // Afficher l'arc
 			noeud1.ajoutVoisin(noeud2); // Ajout des noeud a leurs listes de voisin
 		} else {
-			System.out.println("Les deux NODE sont d√©j√† relier");
+			System.out.println("Les deux NODE sont dÈj‡ relier");
 		}
 	}
 	// Relier un User a un Node
@@ -133,14 +133,14 @@ public class Graph {
 			listeArcs.add(arc); // Ajout a la liste des arcs
 			arc.affichageUN(); // Afficher l'arc
 		} else {
-			System.out.println("Le NODE et l'USER sont d√©j√† reli√©s");
+			System.out.println("Le NODE et l'USER sont dÈj‡ reliÈs");
 		}
 	}
 
 	public User rechercheUser(int unIdData) {
 		//Recherche user interesse par la data
 		for (User unUser : listeUsers) {
-			for (Data donne : unUser.getIdDataVoulu()) {
+			for (Data donne : unUser.getDataVoulu()) {
 				if (donne.getIndice() == unIdData) {
 					userVoulu = unUser;
 				}
@@ -174,7 +174,7 @@ public class Graph {
 	public ArrayList<Arc> dijkstra(int idNoeudVoulu, int idUser) { // Algorithme de Dijkstra pour trouver le plus court chemin
 		ArrayList<Arc> chemin = new ArrayList<Arc>();
 		ArrayList<Node> NAV = new ArrayList<Node>();
-		for (Node unNode : listeNodes) { // Cr√©ation de la liste des noeud a visites
+		for (Node unNode : listeNodes) { // CrÈation de la liste des noeud a visites
 			NAV.add(unNode);
 		}
 		ArrayList<Float> distance = new ArrayList<Float>();
@@ -227,14 +227,14 @@ public class Graph {
 	}
 
 
-	public void affichageListeFloat(ArrayList<Float> uneListe) { // Affichage des √©l√©ment d'une liste de flotant
+	public void affichageListeFloat(ArrayList<Float> uneListe) { // Affichage des ÈlÈment d'une liste de flotant
 		for (float unFloat : uneListe) {
 			System.out.print("FLOAT ".concat(Float.toString(unFloat)).concat(", "));
 		}
 		System.out.println("");
 	}
 
-	public void affichageListeArc(ArrayList<Arc> uneListe) { // Affichage des √©l√©ment d'une liste d'arcs
+	public void affichageListeArc(ArrayList<Arc> uneListe) { // Affichage des ÈlÈment d'une liste d'arcs
 		for (Arc unArc : uneListe) {
 			unArc.affichageNN();
 		}
@@ -351,6 +351,26 @@ public class Graph {
 			}
 		}
 	}
+	public void placementDonne(){
+	    int cpt = 0;
+	    ArrayList<Integer> listeInteret = new ArrayList<Integer>();
+	    for (Data uneData : listeData){
+	        for (User unUser : listeUsers){
+	            if (unUser.interetData(uneData)==true){
+	                cpt=cpt+1;
+	                listeInteret.add(unUser.getIndice());
+                }
+            }
+            if (cpt==1){ // la donnee est voulu par un utilisateur
+                userVoulu = rechercheUser(uneData.getIndice());
+                noeud1 = userVoulu.getNodeVoisin();
+                noeud1.ajoutData(uneData);
+            } else if (cpt==2){ // la donnee est voulu par deux utilisateurs
+                placementDataUsers(listeInteret.get(0),listeInteret.get(1),uneData.getIndice());
+            }
+            cpt=0;
+        }
+    }
 
 	public int arcTempsUN(int unIdUser, int unIdNode) { // Recupaire le poid d'un arc entre un utilisateur et un noeud
 		for (Arc unArc : listeArcs) {
@@ -373,4 +393,25 @@ public class Graph {
 		}
 		return 0;
 	}
+    public void placerDataMKP() { //Placement de toutes les datas par ordre de taille
+        trierListeDataTaille();
+        for (Data uneData : listeData) {
+            userVoulu = rechercheUser(uneData.getIndice());
+            noeud1 = userVoulu.getNodeVoisin();
+            noeud1.ajoutData(uneData);
+        }
+    }
+
+    public void trierListeDataTaille() { // Trie une liste de data selon leurs tailles
+        int size = listeData.size();
+        for (int i = 0; i < size; i++) {
+            for (int j = 1; j < (size - i); j++) {
+                if (listeData.get(j - 1).getTaille() > listeData.get(j).getTaille()) {
+                    Data mem = listeData.get(j - 1);
+                    listeData.set(j - 1, listeData.get(j));
+                    listeData.set(j, mem);
+                }
+            }
+        }
+    }
 }

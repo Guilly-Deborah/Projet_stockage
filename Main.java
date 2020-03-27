@@ -28,18 +28,10 @@ public class Main {
 		graph.relierUserNode(1,3,2);
 		graph.relierUserNode(2,2,2);
 		// Placement des datas
-		//graph.placerData();
-		// Placement d'une date voulu par deux utilisateurs
-		graph.placementDataUsers(1,2,1);
-		//AFFICHAGE
-		//graph.affichage();
+		//graph.placerData(); // Toutes les donnees sont voulu par un utilisateur
+        //graph.placementDonne(); // Les donnes peuvent etre voulu par un ou deux utilisateurs
+        graph.placerDataMKP(); // Une solution au probleme du sac a dos multiple
 
 	}
 }
 
-/*
-Indexage automatique
-Commentaire : Main, Graph, Arc
-Graph : 
-
- */
